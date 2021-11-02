@@ -56,7 +56,7 @@ exports.checkAccountId = async (req, res, next) => {
       next({
         success: false,
         status: 404,
-        message: "not found",
+        message: "account not found",
       });
       // ACCOUNT EXITS => ATTACH TO REQ-BODY AND CONTINUE ON =>
     } else {
