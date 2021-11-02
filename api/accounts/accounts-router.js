@@ -4,17 +4,17 @@ const Account = require("./accounts-model");
 
 router.get("/", async (req, res, next) => {
   try {
-    const acccounts = await Account.getAll();
-    res.json(acccounts);
+    const accounts = await Account.getAll();
+    res.json(accounts);
   } catch (err) {
     next(err);
   }
 });
 
-router.get("/:id", md.checkAccountId, (req, res, next) => {
-  // DO YOUR MAGIC
+router.get("/:id", md.checkAccountId, async (req, res, next) => {
   try {
-    res.json("get account by id");
+    const accounts = await Account.getById(req.params.id);
+    res.json(accounts);
   } catch (err) {
     next(err);
   }
