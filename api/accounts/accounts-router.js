@@ -39,8 +39,9 @@ router.put(
   md.checkAccountId,
   md.checkAccountPayload,
   md.checkAccountNameUnique,
-  (req, res, next) => {
-    // DO YOUR MAGIC
+  async (req, res, next) => {
+    const updated = await Account.updateById(req.params.id, req.body);
+    res.json(updated);
     try {
       res.json("update accounts");
     } catch (err) {
@@ -62,6 +63,7 @@ router.delete("/:id", md.checkAccountId, async (req, res, next) => {
 });
 
 // GLOBAL ERROR HANDLING MIDDLEWARE
+// eslint-disable-next-line
 router.use((err, req, res, next) => {
   res.status(err.status || 500).json({
     success: false,
