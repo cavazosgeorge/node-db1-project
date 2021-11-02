@@ -16,12 +16,11 @@ const create = async (account) => {
   return getById(id);
 };
 
-const updateById = (id, account) => {
-  // DO YOUR MAGIC
-};
+const updateById = (id, account) => {};
 
+// QUERY => DELETE FROM ACCOUNT WHERE ID => 1
 const deleteById = (id) => {
-  // DO YOUR MAGIC
+  return db("accounts").where("id", id).del();
 };
 
 module.exports = {
