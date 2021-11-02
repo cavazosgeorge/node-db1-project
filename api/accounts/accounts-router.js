@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const md = require("./accounts-middleware");
+const Account = require("./accounts-model");
 
-router.get("/", (req, res, next) => {
-  // DO YOUR MAGIC
+router.get("/", async (req, res, next) => {
   try {
-    res.json("get accounts");
+    const acccounts = await Account.getAll();
+    res.json(acccounts);
   } catch (err) {
     next(err);
   }
